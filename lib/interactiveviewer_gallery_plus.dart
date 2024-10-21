@@ -17,8 +17,8 @@ typedef IndexedFocusedWidgetBuilder = Widget Function(BuildContext context, int 
 
 typedef IndexedTagStringBuilder = String Function(int index);
 
-class InteractiveviewerGallery<T> extends StatefulWidget {
-  const InteractiveviewerGallery({
+class InteractiveviewerGalleryPlus<T> extends StatefulWidget {
+  const InteractiveviewerGalleryPlus({
     required this.sources,
     required this.initIndex,
     required this.itemBuilder,
@@ -51,7 +51,7 @@ class InteractiveviewerGallery<T> extends StatefulWidget {
   _TweetSourceGalleryState createState() => _TweetSourceGalleryState();
 }
 
-class _TweetSourceGalleryState extends State<InteractiveviewerGallery> with SingleTickerProviderStateMixin {
+class _TweetSourceGalleryState extends State<InteractiveviewerGalleryPlus> with SingleTickerProviderStateMixin {
   PageController? _pageController;
   TransformationController? _transformationController;
 

@@ -136,7 +136,6 @@ class _CustomDismissibleState extends State<CustomDismissible> with SingleTicker
       child: GestureDetector(
         behavior: HitTestBehavior.translucent,
         onVerticalDragStart: widget.enabled ? _handleDragStart : null,
-        // onVerticalDragUpdate: widget.enabled ? _handleDragUpdate : null,
         onVerticalDragEnd: widget.enabled ? _handleDragEnd : null,
         child: content,
       ),
@@ -146,7 +145,6 @@ class _CustomDismissibleState extends State<CustomDismissible> with SingleTicker
   void _onPointerMove(PointerMoveEvent event) {
     if (_dragUnderway) {
       Offset delta = event.delta;
-      final Offset oldDragExtent = _dragOffset;
       if (!_isActive || _animateController.isAnimating) {
         return;
       }
