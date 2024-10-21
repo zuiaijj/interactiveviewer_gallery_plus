@@ -1,12 +1,14 @@
 # interactiveviewer_gallery
 [![pub package](https://img.shields.io/pub/v/interactiveviewer_gallery.svg)](https://pub.dartlang.org/packages/interactiveviewer_gallery)
-
+从 插件 [interactiveviewer_gallery](https://pub.dev/packages/interactiveviewer_gallery/versions) fork
 图片预览&视频预览&图片视频混合预览的容器UI
 1. 支持双指缩放
 2. 支持双击放大
 3. 支持左右切换图片
 4. 支持下拉手势返回, 伴随缩小、移动、透明度变化
 5. 支持视频失去焦点自动暂停
+6. 下拉返回手势支持左右移动
+7. 更顺滑的手势放大体验
 
 ## 预览
 [qiniu](http://file.jinxianyun.com/interactiveviewer_gallery_0_1_0.mp4)/[youtube](https://youtu.be/S-93Et_nYQs)

@@ -1,8 +1,8 @@
-# interactiveviewer_gallery
+# interactiveviewer_gallery_plus
 [![pub package](https://img.shields.io/pub/v/interactiveviewer_gallery.svg)](https://pub.dartlang.org/packages/interactiveviewer_gallery)
 
 [中文文档](./README_CH.md)
-
+fork from [interactiveviewer_gallery](https://pub.dev/packages/interactiveviewer_gallery/versions)
 A flutter library to show picture and video preview gallery
 support
 1. two-finger gesture zoom
@@ -10,6 +10,8 @@ support
 3. switch left and right
 4. gesture back: scale, transfer, opacity of background
 5. video auto paused when miss focus
+6. Pull-down gesture supports left and right movement
+7. Smoother gesture zooming experience
 
 ## Preview
 [video for youtube](https://youtu.be/S-93Et_nYQs)
