@@ -1,12 +1,11 @@
 name: interactiveviewer_gallery_plus
 description: Image and video preview component that supports zoom and drag
 version: 0.1.0
-author: cqian<cqian780@gmail.com>
 homepage: https://github.com/zuiaijj/interactiveviewer_gallery_plus
 
 environment:
-  sdk: '>=2.12.0 <3.0.0'
-  flutter: ">=1.20.0 <3.0.0"
+  sdk: '>=2.12.0 <4.0.0'
+  flutter: ">=1.20.0"
 
 dependencies:
   flutter:
