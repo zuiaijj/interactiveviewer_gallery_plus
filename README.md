@@ -14,11 +14,11 @@ support
 7. Smoother gesture zooming experience
 
 ## Preview
-[video for youtube](https://youtu.be/S-93Et_nYQs)
+The picture browsing effect achieved by using this plug-in is as follows in QuanDao【犬岛】 App。
+[youtube](https://youtu.be/GWtGYJc-1-Y)
 
-[video for qiniu](http://file.jinxianyun.com/interactiveviewer_gallery_0_1_0.mp4)
-
-[apk download](http://file.jinxianyun.com/interactiveviewer_gallery_0_1_0.apk)
+[犬岛 download in appstore](https://apps.apple.com/se/app/id6450510581)
+[犬岛 download in qq market](https://a.app.qq.com/o/simple.jsp?pkgname=com.fixtime.quandao)
 
 ## Setup
 

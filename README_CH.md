@@ -1,4 +1,4 @@
-# interactiveviewer_gallery
+# interactiveviewer_gallery_plus
 [![pub package](https://img.shields.io/pub/v/interactiveviewer_gallery.svg)](https://pub.dartlang.org/packages/interactiveviewer_gallery)
 从 插件 [interactiveviewer_gallery](https://pub.dev/packages/interactiveviewer_gallery/versions) fork
 图片预览&视频预览&图片视频混合预览的容器UI
@@ -11,10 +11,11 @@
 7. 更顺滑的手势放大体验
 
 ## 预览
-[qiniu](http://file.jinxianyun.com/interactiveviewer_gallery_0_1_0.mp4)/[youtube](https://youtu.be/S-93Et_nYQs)
+在犬岛APP上，使用该插件实现的图片浏览效果如下：
+[youtube](https://youtu.be/GWtGYJc-1-Y)
 
-
-[apk download](http://file.jinxianyun.com/interactiveviewer_gallery_0_1_0.apk)
+[在Appstore下载犬岛](https://apps.apple.com/se/app/id6450510581)
+[在应用宝下载犬岛](https://a.app.qq.com/o/simple.jsp?pkgname=com.fixtime.quandao)
 
 ## 安装
 
