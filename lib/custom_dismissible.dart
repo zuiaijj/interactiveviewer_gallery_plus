@@ -11,6 +11,7 @@ class CustomDismissible extends StatefulWidget {
     this.onDismissDragCancel,
     this.dismissThreshold = 0.2,
     this.enabled = true,
+    this.stopDrag = false,
   });
 
   final Widget child;
@@ -19,12 +20,14 @@ class CustomDismissible extends StatefulWidget {
   final VoidCallback? onDismissDragStart;
   final VoidCallback? onDismissDragCancel;
   final bool enabled;
+  final bool stopDrag;
 
   @override
   _CustomDismissibleState createState() => _CustomDismissibleState();
 }
 
-class _CustomDismissibleState extends State<CustomDismissible> with SingleTickerProviderStateMixin {
+class _CustomDismissibleState extends State<CustomDismissible>
+    with SingleTickerProviderStateMixin {
   late AnimationController _animateController;
   late Animation<Offset> _moveAnimation;
   late Animation<double> _scaleAnimation;
@@ -69,7 +72,6 @@ class _CustomDismissibleState extends State<CustomDismissible> with SingleTicker
       end: 0.5,
     ));
 
-
     _opacityAnimation = DecorationTween(
       begin: BoxDecoration(
         color: const Color(0xFF000000),
@@ -78,7 +80,6 @@ class _CustomDismissibleState extends State<CustomDismissible> with SingleTicker
         color: const Color(0x00000000),
       ),
     ).animate(_animateController);
-
   }
 
   void _handleDragStart(DragStartDetails details) {
@@ -98,6 +99,10 @@ class _CustomDismissibleState extends State<CustomDismissible> with SingleTicker
       return;
     }
 
+    resetDrag();
+  }
+
+  resetDrag() {
     _dragUnderway = false;
 
     if (_animateController.isCompleted) {
@@ -117,6 +122,16 @@ class _CustomDismissibleState extends State<CustomDismissible> with SingleTicker
   }
 
   @override
+  void didUpdateWidget(covariant CustomDismissible oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.stopDrag != widget.stopDrag && !widget.stopDrag) {
+      WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+        resetDrag();
+      });
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
     final Widget content = DecoratedBoxTransition(
       decoration: _opacityAnimation,
@@ -130,11 +145,13 @@ class _CustomDismissibleState extends State<CustomDismissible> with SingleTicker
     );
 
     return Listener(
-      onPointerMove: widget.enabled ? _onPointerMove : null,
+      onPointerMove: widget.enabled && !widget.stopDrag ? _onPointerMove : null,
       child: GestureDetector(
         behavior: HitTestBehavior.translucent,
-        onVerticalDragStart: widget.enabled ? _handleDragStart : null,
-        onVerticalDragEnd: widget.enabled ? _handleDragEnd : null,
+        onVerticalDragStart:
+            widget.enabled && !widget.stopDrag ? _handleDragStart : null,
+        onVerticalDragEnd:
+            widget.enabled && !widget.stopDrag ? _handleDragEnd : null,
         child: content,
       ),
     );

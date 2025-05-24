@@ -231,6 +231,7 @@ class _TweetSourceGalleryState extends State<InteractiveviewerGalleryPlus>
         },
         child: CustomDismissible(
           onDismissed: () => Navigator.of(context).pop(),
+          stopDrag: currentTouchPointNum > 1,
           onDismissDragStart: () {
             widget.onDismissDragStart?.call();
             setState(() {
