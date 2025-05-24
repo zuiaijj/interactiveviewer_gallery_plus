@@ -1,6 +1,6 @@
 name: interactiveviewer_gallery_plus
 description: Image and video preview component that supports zoom and drag
-version: 0.1.0
+version: 0.1.1
 homepage: https://github.com/zuiaijj/interactiveviewer_gallery_plus
 
 environment:
