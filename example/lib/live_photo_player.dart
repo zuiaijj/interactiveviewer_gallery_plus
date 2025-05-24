@@ -23,20 +23,21 @@ class LivePhotoWrapper extends StatefulWidget {
   final EdgeInsetsGeometry markPadding;
   final EdgeInsetsGeometry? markMargin;
 
-  const LivePhotoWrapper(
-      {super.key,
-      this.width,
-      this.height,
-      this.canVideoAutoPlay = false,
-      this.coverPic,
-      this.onTap,
-      required this.liveUrl,
-      this.localLiveFile,
-      this.canPressPlay = true,
-      required this.markSize,
-      this.markAlign = Alignment.bottomLeft,
-      this.markPadding = const EdgeInsets.symmetric(horizontal: 3, vertical: 2),
-      this.markMargin,});
+  const LivePhotoWrapper({
+    super.key,
+    this.width,
+    this.height,
+    this.canVideoAutoPlay = false,
+    this.coverPic,
+    this.onTap,
+    required this.liveUrl,
+    this.localLiveFile,
+    this.canPressPlay = true,
+    required this.markSize,
+    this.markAlign = Alignment.bottomLeft,
+    this.markPadding = const EdgeInsets.symmetric(horizontal: 3, vertical: 2),
+    this.markMargin,
+  });
   @override
   _LivePhotoWrapperState createState() => _LivePhotoWrapperState();
 }
@@ -53,9 +54,11 @@ class _LivePhotoWrapperState extends State<LivePhotoWrapper> {
   double? get width => widget.width;
   double? get height => widget.height;
   String get liveSourceStr => widget.liveUrl;
-  EdgeInsetsGeometry get markMargin => widget.markMargin ?? EdgeInsets.symmetric(
-      horizontal: widget.markSize.width / 3.5,
-      vertical: widget.markSize.height / 1.5);
+  EdgeInsetsGeometry get markMargin =>
+      widget.markMargin ??
+      EdgeInsets.symmetric(
+          horizontal: widget.markSize.width / 3.5,
+          vertical: widget.markSize.height / 1.5);
   RxBool isShowLoading = false.obs;
   RxInt rotationCorrection = 0.obs;
 
@@ -77,7 +80,8 @@ class _LivePhotoWrapperState extends State<LivePhotoWrapper> {
       _livePlayController = VideoPlayerController.file(widget.localLiveFile!,
           videoPlayerOptions: VideoPlayerOptions(mixWithOthers: true));
     } else {
-      _livePlayController = VideoPlayerController.networkUrl(Uri.parse(liveSourceStr),
+      _livePlayController = VideoPlayerController.networkUrl(
+          Uri.parse(liveSourceStr),
           videoPlayerOptions: VideoPlayerOptions(mixWithOthers: true));
     }
     await _livePlayController?.initialize();
@@ -112,13 +116,12 @@ class _LivePhotoWrapperState extends State<LivePhotoWrapper> {
     if (livePlayStatus.value == LivePlayType.isPlaying) return;
     if (currentController?.value.isInitialized == true) {
       // if (byHand) {
-        // HapticFeedback.lightImpact();
+      // HapticFeedback.lightImpact();
       // }
       // hapticFeedback();
       currentController?.play();
     }
   }
-
 
   _onVideoPlayerControllerChange() async {
     rotationCorrection.value = currentController!.value.rotationCorrection;
@@ -185,13 +188,17 @@ class _LivePhotoWrapperState extends State<LivePhotoWrapper> {
               }),
             ),
           ),
-        Positioned.fill(child:Obx(() {
+        Positioned.fill(child: Obx(() {
           if (isShowLoading.value) {
             return Center(
-              child: Container(color: null, child: CupertinoActivityIndicator( radius: 10 )),
+              child: Container(
+                  color: null, child: CupertinoActivityIndicator(radius: 10)),
             );
           } else {
-            return Container(width: 0, height: 0,);
+            return Container(
+              width: 0,
+              height: 0,
+            );
           }
         })),
         if (currentController != null)
@@ -223,7 +230,8 @@ class _LivePhotoWrapperState extends State<LivePhotoWrapper> {
         widget.onTap?.call();
       },
       onLongPress: widget.canPressPlay == true ? () => _onLivePlay(true) : null,
-      onLongPressEnd: widget.canPressPlay == true ? (_) => _onLivePhotoStop() : null,
+      onLongPressEnd:
+          widget.canPressPlay == true ? (_) => _onLivePhotoStop() : null,
       child: Stack(
         children: [
           Positioned(
@@ -232,7 +240,8 @@ class _LivePhotoWrapperState extends State<LivePhotoWrapper> {
             left: 0,
             right: 0,
             child: Center(
-              child: Container(color: null, child: CupertinoActivityIndicator( radius: 16 )),
+              child: Container(
+                  color: null, child: CupertinoActivityIndicator(radius: 16)),
             ),
           ),
           Container(
@@ -260,10 +269,9 @@ class _LivePhotoWrapperState extends State<LivePhotoWrapper> {
     currentController?.dispose();
     super.dispose();
   }
-  
 }
 
-class LivePhotoMask  extends StatelessWidget {
+class LivePhotoMask extends StatelessWidget {
   final EdgeInsetsGeometry markMargin;
   final EdgeInsetsGeometry markPadding;
   final Size markSize;
@@ -272,16 +280,15 @@ class LivePhotoMask  extends StatelessWidget {
   final Color backgroundColor;
   final bool displayBackGround;
 
-  const LivePhotoMask({
-    super.key,
-    required this.markMargin,
-    required this.markSize,
-    required this.markPadding,
-    this.onlyIcon = false,
-    this.frontColor = Colors.white,
-    this.backgroundColor = Colors.black,
-    this.displayBackGround = true
-  });
+  const LivePhotoMask(
+      {super.key,
+      required this.markMargin,
+      required this.markSize,
+      required this.markPadding,
+      this.onlyIcon = false,
+      this.frontColor = Colors.white,
+      this.backgroundColor = Colors.black,
+      this.displayBackGround = true});
 
   @override
   Widget build(BuildContext context) {
@@ -293,10 +300,12 @@ class LivePhotoMask  extends StatelessWidget {
         children: [
           Container(
             // padding: EdgeInsets.symmetric(vertical: 5),
-            decoration: displayBackGround? BoxDecoration(
-                color: backgroundColor.withOpacity(0.45),
-                borderRadius: BorderRadius.circular(markSize.height / 2 + markPadding.vertical)
-            ):null,
+            decoration: displayBackGround
+                ? BoxDecoration(
+                    color: backgroundColor.withOpacity(0.45),
+                    borderRadius: BorderRadius.circular(
+                        markSize.height / 2 + markPadding.vertical))
+                : null,
             width: markSize.width,
             height: markSize.height,
             alignment: Alignment.center,
@@ -308,7 +317,7 @@ class LivePhotoMask  extends StatelessWidget {
                     visible: markSize.width > 50,
                     child: Text(
                       "实况",
-                      style: Theme.of(context).textTheme.caption?.copyWith(
+                      style: Theme.of(context).textTheme.labelSmall?.copyWith(
                           color: frontColor,
                           fontWeight: FontWeight.normal,
                           letterSpacing: 0),
@@ -351,7 +360,6 @@ class LivePhotoConfigController extends GetxController {
     super.onClose();
   }
 
-
   _initConfig() async {
     // if (Platform.isAndroid) {
     //   remindClickSelectLiveContent.value = true;
@@ -360,7 +368,6 @@ class LivePhotoConfigController extends GetxController {
     //       await getPrefs("$myUid-${StorageConstants.spHasClickSelectLiveKey}") ?? false;
     // }
   }
-
 
   clickLiveSelectRemind() {
     // remindClickSelectLiveContent.value = true;

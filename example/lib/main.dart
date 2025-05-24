@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:example/display_gesture_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:interactiveviewer_gallery_plus/hero_dialog_route.dart';
 import 'package:interactiveviewer_gallery_plus/interactiveviewer_gallery_plus.dart';
 import 'package:video_player/video_player.dart';
@@ -44,17 +45,24 @@ class InteractiveviewDemoPage extends StatefulWidget {
 
 class _InteractiveviewDemoPageState extends State<InteractiveviewDemoPage> {
   List<DemoSourceEntity> sourceList = [
-    DemoSourceEntity(0, 'image', 'https://cdn.pixabay.com/photo/2023/04/10/15/56/bowl-7914112_1280.jpg'),
-    DemoSourceEntity(1, 'image', 'https://cdn.pixabay.com/photo/2024/09/27/15/20/halloween-9079096_1280.jpg'),
-    DemoSourceEntity(2, 'image', 'https://cdn.pixabay.com/photo/2023/08/07/15/18/woman-8175307_1280.jpg'),
-    DemoSourceEntity(3, 'image', 'https://cdn.pixabay.com/animation/2023/05/04/16/12/16-12-04-538_512.gif'),
-    DemoSourceEntity(4, 'video', 'https://cdn.pixabay.com/video/2023/11/28/191159-889246512_tiny.mp4',
-        previewUrl: 'https://cdn.pixabay.com/photo/2024/06/05/19/45/mountains-8811206_1280.jpg'),
+    DemoSourceEntity(0, 'image',
+        'https://quandaoimages.fixtime.com/ca916b20-38b1-11f0-b923-25cd5067de53.jpg?imageView2/2/w/1024/format/jpg'),
+    DemoSourceEntity(1, 'image',
+        'https://quandaoimages.fixtime.com/cb1ae670-38b1-11f0-b923-25cd5067de53.jpg?imageView2/2/w/1024/format/jpg'),
+    DemoSourceEntity(2, 'image',
+        'https://cdn.pixabay.com/photo/2023/08/07/15/18/woman-8175307_1280.jpg'),
+    DemoSourceEntity(3, 'image',
+        'https://cdn.pixabay.com/animation/2023/05/04/16/12/16-12-04-538_512.gif'),
+    DemoSourceEntity(4, 'video',
+        'https://cdn.pixabay.com/video/2023/11/28/191159-889246512_tiny.mp4',
+        previewUrl:
+            'https://cdn.pixabay.com/photo/2024/06/05/19/45/mountains-8811206_1280.jpg'),
     DemoSourceEntity(5, 'live',
         'https://quandaoimages.fixtime.com/d1993230-8584-11ef-b197-f5d39dc8e39e.jpg'),
-    DemoSourceEntity(6, 'video',
-        'https://cdn.pixabay.com/video/2024/08/20/227567_tiny.mp4',
-        previewUrl: 'https://cdn.pixabay.com/photo/2023/01/15/22/48/river-7721287_1280.jpg'),
+    DemoSourceEntity(
+        6, 'video', 'https://cdn.pixabay.com/video/2024/08/20/227567_tiny.mp4',
+        previewUrl:
+            'https://cdn.pixabay.com/photo/2023/01/15/22/48/river-7721287_1280.jpg'),
   ];
 
   @override
@@ -86,7 +94,8 @@ class _InteractiveviewDemoPageState extends State<InteractiveviewDemoPage> {
           alignment: Alignment.center,
           children: [
             CachedNetworkImage(
-              imageUrl: source.type == 'video' ? source.previewUrl! : source.url,
+              imageUrl:
+                  source.type == 'video' ? source.previewUrl! : source.url,
               fit: BoxFit.cover,
               width: 100,
               height: 100,
@@ -134,7 +143,8 @@ class _InteractiveviewDemoPageState extends State<InteractiveviewDemoPage> {
           tag: sourceEntity.id,
           child: LivePhotoWrapper(
             key: ValueKey(sourceEntity.url),
-            liveUrl: 'https://quandaoimages.fixtime.com/caf69670-8584-11ef-b197-f5d39dc8e39e.MOV',
+            liveUrl:
+                'https://quandaoimages.fixtime.com/caf69670-8584-11ef-b197-f5d39dc8e39e.MOV',
             height: MediaQuery.of(context).size.width * 0.85,
             markSize: const Size(57, 24),
             width: MediaQuery.of(context).size.width,
@@ -146,7 +156,8 @@ class _InteractiveviewDemoPageState extends State<InteractiveviewDemoPage> {
           ),
         ),
       );
-    } {
+    }
+    {
       return DemoImageItem(sourceEntity);
     }
   }
